@@ -17,7 +17,7 @@
 # It will likely not result in a good quality reconstruction.
 # This config will run on a single GPU.
 
-include 'defaults.gin'
+include 'configs/defaults.gin'
 
 max_steps = 250000
 

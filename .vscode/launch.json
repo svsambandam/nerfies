@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",//#tmux 4 otby100
+            "type": "python",
+            "python": "/scratch/soft/anaconda3/envs/hypernerf/bin/python",
+            "request": "launch",
+            "program": "eval.py",
+            "args": ["--gin_configs", "configs/test_vrig.gin"],//"--data_dir", "/ubc/cs/research/kmyi/svsamban/research/data-nerfies/curls", "--base_folder", "./out", 
+            "console": "integratedTerminal",
+            "justMyCode": true,
+        },
+        // {
+        //     "name": "Python: Current File",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "program": "train.py",
+        //     "args": ["--data_dir", "/ubc/cs/research/kmyi/svsamban/research/data-nerfies/curls", "--base_folder", "./out", "--gin_configs", "configs/test_vrig.gin"],
+        //     "console": "integratedTerminal",
+        //     "justMyCode": true,
+        //     "python": "/scratch/soft/anaconda3/envs/nerfies/bin/python"
+        // }
+    ]
+}

@@ -32,6 +32,9 @@ import numpy as np
 import tensorflow as tf
 
 from nerfies import configs
+import sys
+
+sys.path.append('/scratch/soft/anaconda3/envs/nerfies2/lib/python3.8/site-packages')
 from nerfies import datasets
 from nerfies import gpath
 from nerfies import model_utils
@@ -40,12 +43,15 @@ from nerfies import schedules
 from nerfies import training
 from nerfies import utils
 
+base_folder = './out/curls50'
+data_dir = '/ubc/cs/research/kmyi/svsamban/research/data-nerfies/curls50'
+
+
 flags.DEFINE_enum('mode', None, ['jax_cpu', 'jax_gpu', 'jax_tpu'],
                   'Distributed strategy approach.')
-
-flags.DEFINE_string('base_folder', None, 'where to store ckpts and logs')
+flags.DEFINE_string('base_folder', base_folder, 'where to store ckpts and logs')
 flags.mark_flag_as_required('base_folder')
-flags.DEFINE_string('data_dir', None, 'input data directory.')
+flags.DEFINE_string('data_dir', data_dir, 'input data directory.')
 flags.DEFINE_multi_string('gin_bindings', None, 'Gin parameter bindings.')
 flags.DEFINE_multi_string('gin_configs', (), 'Gin config files.')
 FLAGS = flags.FLAGS
@@ -141,7 +147,7 @@ def main(argv):
       f.write(config_str)
 
   logging.info('Starting host %d. There are %d hosts : %s', jax.process_index(),
-               jax.process_count(), str(jax.process_indexs()))
+               jax.process_count(), str(jax.process_index()))
   logging.info('Found %d accelerator devices: %s.', jax.local_device_count(),
                str(jax.local_devices()))
   logging.info('Found %d total devices: %s.', jax.device_count(),
